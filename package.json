@@ -1,0 +1,14 @@
+{
+  "name": "queuing",
+  "version": "1.0.0",
+  "description": "Message queuing and storage design",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paulo Jefferson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
