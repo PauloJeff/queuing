@@ -27,6 +27,9 @@ zip -r function.zip ./
 #Criar lambda function
 aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-function --function-name localstack-lambda-user-sqs-trigger --runtime nodejs20.x --role arn:aws:iam::000000000000:role/user-lambda-noop-role --handler index.handler --zip-file fileb://function.zip --timeout 120
 
+#Sleep para aguardar subida do lambda
+sleep 5
+
 #Criar fila do sqs
 aws --endpoint-url=http://localhost:4566 --profile localstack sqs create-queue --queue-name UserQueue
 
