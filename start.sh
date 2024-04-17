@@ -21,8 +21,6 @@ aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-func
 #Criar fila do sqs
 aws --endpoint-url=http://localhost:4566 --profile localstack sqs create-queue --queue-name UserQueue
 
-aws --endpoint-url=http://localhost:4566 --profile localstack sqs get-queue-attributes --queue-url http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/UserQueue --attribute-names QueueArn
-
 #Criar trigger do SNS com a lambda function
 aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-event-source-mapping --function-name localstack-lambda-user-sqs-trigger --batch-size 10 --event-source-arn arn:aws:sqs:us-east-1:000000000000:UserQueue
 
