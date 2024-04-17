@@ -1,0 +1,17 @@
+{
+  "name": "user-lambda",
+  "version": "1.0.0",
+  "description": "Lambda to post in api of users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paulo Jefferson Mendes Oliveira",
+  "license": "ISC",
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1599.0",
+    "axios": "^1.6.8",
+    "install": "^0.13.0"
+  }
+}

@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
         "target": "ES2022",
-        "module": "CommonJS",
+        "module": "commonJs",
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
             "src/*": ["./src/*"],
-            "test/*": ["./tect/*"],
+            "test/*": ["./test/*"],
             "config/*": ["./config/*"]
         }
     },
