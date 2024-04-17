@@ -9,8 +9,8 @@ Essas instruções fornecerão uma cópia do projeto em execução na sua máqui
 O que você precisa para instalar o software e como instalá-lo.
 ```bash
 Docker
-Docker  Compose
-AWS  CLI
+Docker Compose
+AWS CLI
 ```
 Configurar profile no aws cli para localstack, o profile não necessariamente precisa ter access keys ou secret keys reais, podem ser usados dados fake.
 
@@ -35,7 +35,7 @@ git clone https://github.com/PauloJeff/queuing.git
 cd projectname
 
 #Renomear .env-example para .env
-mv .env-example  .env
+mv .env-example .env
 
 # Instale as dependências
 npm install
@@ -58,7 +58,7 @@ O projeto possui um script de inicialização rápida, basta executá-lo e todos
 Caso queira executar os passos manualmente, segue comando abaixo.
 ```bash
 #Executar o projeto
-docker compose up  -d
+docker compose up -d
 
 #Criar tópico SNS
 aws --endpoint-url=http://localhost:4566 --profile localstack sns create-topic --name user-creation-events --output table | cat
@@ -73,13 +73,13 @@ npm install
 zip -r function.zip ./
 
 #Criar lambda function
-aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-function --function-name localstack-lambda-user-sqs-trigger  --runtime nodejs20.x --role arn:aws:iam::000000000000:role/user-lambda-noop-role --handler  index.handler --zip-file  fileb://function.zip  --timeout 120
+aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-function --function-name localstack-lambda-user-sqs-trigger --runtime nodejs20.x --role arn:aws:iam::000000000000:role/user-lambda-noop-role --handler index.handler --zip-file fileb://function.zip --timeout 120
 
 #Criar fila do sqs
 aws --endpoint-url=http://localhost:4566 --profile localstack sqs create-queue --queue-name UserQueue
 
 #Criar trigger do SNS com a lambda function
-aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-event-source-mapping --function-name  localstack-lambda-user-sqs-trigger --batch-size 10 --event-source-arn arn:aws:sqs:us-east-1:000000000000:UserQueue
+aws --endpoint-url=http://localhost:4566 --profile localstack lambda create-event-source-mapping --function-name localstack-lambda-user-sqs-trigger --batch-size 10 --event-source-arn arn:aws:sqs:us-east-1:000000000000:UserQueue
 
 #Enviar mensagem
 aws --endpoint-url=http://localhost:4566 --profile localstack sqs send-message --queue-url http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/UserQueue --message-body '{"name":"Jhon Doe","email":"jhon_doe@email.com","age":"45"}'
@@ -104,4 +104,4 @@ Essa aplicação possui uma api REST que permite gerenciar as informações proc
 
 ## Autores
 
-*  **Paulo Jefferson Mendes Oliveira** - *Criador e executor do projeto* - PauloJeff
+* **Paulo Jefferson Mendes Oliveira** - *Criador e executor do projeto* - PauloJeff
