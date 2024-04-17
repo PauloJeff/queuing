@@ -10,9 +10,14 @@ O que você precisa para instalar o software e como instalá-lo.
 ```bash
 Docker
 Docker Compose
+Node.js 21.7.1
+NPM
+zip
 AWS CLI
 ```
 Configurar profile no aws cli para localstack, o profile não necessariamente precisa ter access keys ou secret keys reais, podem ser usados dados fake.
+
+OBS: Os testes e execução foram feitos em um Ubuntu 22.04
 
 ```bash
 aws configure --profile localstack
