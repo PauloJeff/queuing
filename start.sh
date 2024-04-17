@@ -3,8 +3,17 @@
 #Executar o projeto
 docker compose up -d
 
+#Sleep para aguardar subida dos serviços
+sleep 3
+
 #Criar tópico SNS
 aws --endpoint-url=http://localhost:4566 --profile localstack sns create-topic --name user-creation-events --output table | cat
+
+#Criar fila para subscription do SNS
+aws --endpoint-url=http://localhost:4566 --profile localstack sqs create-queue --queue-name SnsQueue
+
+#Criar subscriber para fila do SNS
+aws --endpoint-url=http://localhost:4566 --profile localstack sns subscribe --topic-arn arn:aws:sns:us-east-1:000000000000:user-creation-events --protocol sqs --notification-endpoint arn:aws:sqs:us-east-1:000000000000:SnsQueue --output table | cat
 
 #A partir da raiz do projeto, ir até a pasta do projeto lambda
 cd src/interfaces/lambda/user
